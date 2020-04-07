@@ -9,7 +9,7 @@ public class Upr2 {
 
     public static void sayHello(String[] args) {
         String osName = System.getProperty("os.name"); // присваиваем переменной osName значение имени системы
-        String name = System.getProperty("user.name"); // присваиваем переменной name значение имени пользователя
+        String name = System.getProperty("user.name"); // присваиваем переменной name значение имени пользователя2
         String temp = ""; // объявляем временную переменную temp для перевода массива в строку
 
         for (String num : args) { // перебираем все элементы массива параметров

@@ -9,7 +9,7 @@ public class Upr3 {
 
     public static void sayHello(String[] args) {
 
-        String name = System.getProperty("user.name"); // присваиваем переменной name значение имени пользователя
+        String name = System.getProperty("user.name"); // 00присваиваем переменной name значение имени пользователя
         String temp = ""; // объявляем временную переменную temp для перевода массива в строку
 
         if (args.length == 1) { // проверяем длину массива параметров, параметров должно быть не больше одного

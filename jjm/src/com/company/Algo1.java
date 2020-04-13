@@ -18,7 +18,9 @@ public class Algo1 {
         System.out.println("\b\b}");
     }
 
+    // алгоритм сортировки пузырьком в порядке убывания
     private static void sortSales(String[] names, double[] data) {
+
         int m = 0; // служебная переменная-счетчик для проверки на наличие данных в массивах (читай дальше)
         if (names.length != data.length) { // проверка на сопоставимость массивов, длина их должна быть одинакова
             System.out.println("Corrupted Data"); // если нет - выводим "Corrupted Data"

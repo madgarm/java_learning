@@ -19,7 +19,9 @@ public class Algo2 {
         System.out.println("\b\b}");
     }
 
+    // алгоритм сортировки выбором, двунаправленный, в порядке возрастания
     private static void sortSales(String[] names, double[] data) {
+
         int m = 0; // служебная переменная-счетчик для проверки на наличие данных в массивах (читай дальше)
 
         if (names.length != data.length) { // проверка на сопоставимость массивов, длина их должна быть одинакова

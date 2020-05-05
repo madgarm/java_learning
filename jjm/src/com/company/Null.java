@@ -4,11 +4,13 @@ public class Null {
 
     public static void main(String[] args) {
         int[][] data = {{0, 0, 2}, {1, 1, 5}, {3, 3, 4}, {2, 2, 17}};
+//        int[][] data = null;
         sort(data);
         printData(data);
     }
 
     // метод для красивой печати массивов с двумя размерностями
+    // !!! не хватает проверки на null и на пустоту
     private static void printData(int[][] data) {
         System.out.print("{");
         for (int i = 0; i < data.length; i++) {
@@ -27,8 +29,8 @@ public class Null {
 
     // метод сортировки массива с двумя размерностями в порядке убыванию по 0-у элементу каждого вложенного массива
     private static void sort(int[][] data) {
-        // первоначальная проверка входного массива на null
-        if (data == null) { // если null
+        // первоначальная проверка входного массива на null и на пустоту
+        if (data == null || data.length == 0) { // если null или пустой массив
             System.out.println("Empty data"); // сообщение об ошибке, иначе основная часть программы
         } else {
             boolean nullError = false; // служебная, по умолчанию ошибки с null нет

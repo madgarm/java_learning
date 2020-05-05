@@ -18,15 +18,23 @@ public class OOP_2 {
         int year; // год рождения
 
         public Person(String surname, int year) { // конструктор класса с 2 параметрами
-            this.surname = surname; // параметр фамилия
-            this.year = year; // параметр год рождения
+            if (surname == null || surname == "" || year < 0) { // проверяем входные параметры
+                System.out.println("Incorrect data"); // если есть ошибк - сообщение
+            } else { // иначе - все ок, присваиваем параметры экземпляру
+                this.surname = surname; // параметр фамилия
+                this.year = year; // параметр год рождения
+            }
         }
 
         public Person(String surname, double height, double weight, int year) { // конструктор класса с 4 параметрами
-            this.surname = surname; // параметр фамилия
-            this.height = height; // параметр рост
-            this.weight = weight; // параметр вес
-            this.year = year; // параметр
+            if (surname == null || surname == "" || year < 0 || height < 0 || weight < 0) { // проверяем входные параметры
+                System.out.println("Incorrect data"); // если есть ошибк - сообщение
+            } else { // иначе - все ок, присваиваем параметры экземпляру
+                this.surname = surname; // параметр фамилия
+                this.height = height; // параметр рост
+                this.weight = weight; // параметр вес
+                this.year = year; // параметр
+            }
         }
 
         public int getSalaryByDayRate(int dayRate) { // метод подсчета зп за 21 день в целых

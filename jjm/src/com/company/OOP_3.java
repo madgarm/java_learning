@@ -6,12 +6,12 @@ public class OOP_3 {
         Detail second = new Detail("Second", 1, 200);
         System.out.println("total=" + Detail.total);
         System.out.println("status=" + Detail.status);
-        first.printDetail();
-        second.printDetail();
+        first.printDetail(first);
+        second.printDetail(second);
         first.sell(10);
         second.sell(300);
-        first.printDetail();
-        second.printDetail();
+        first.printDetail(first);
+        second.printDetail(second);
         System.out.println("total=" + Detail.total);
         System.out.println("status=" + Detail.status);
     }
@@ -38,14 +38,14 @@ public class OOP_3 {
 
         public boolean sell(int toSell) { // метод sell, передается количество деталей на продажу
 
-            if (toSell>quantity | toSell<0 | toSell>total) { // проверяем на возможность продажи, если не ОК -
+            if (toSell > quantity | toSell < 0 | toSell > total) { // проверяем на возможность продажи, если не ОК -
                 return false; // вовзращаем false
             } else { // если же все адекватно
                 quantity -= toSell; // списываем из количества этих деталей
                 total -= toSell; // списываем с общего количества деталей на складе
                 if (total < TOTAL_MIN) { // проверяем общее число деталей по нижней границе
                     status = "Need to buy some details"; // изменяем статус
-                } else if (total > TOTAL_MAX) { // по вернхней границе
+                } else if (total > TOTAL_MAX) { // по верхней границе
                     status = "Not enough storage space"; // изменяем на статус
                 } else if (TOTAL_MIN <= total & total <= TOTAL_MAX) { // если же все в пределах
                     status = "OK"; // то ОК
@@ -54,8 +54,8 @@ public class OOP_3 {
             }
         }
 
-        public void printDetail() { // метод для красивой печати
-            System.out.printf("%s %d: %d%n", name, number, quantity);
+        public void printDetail(Detail thing) { // метод для красивой печати
+            System.out.printf("%s %d: %d%n", thing.name, thing.number, thing.quantity);
         }
 
     }

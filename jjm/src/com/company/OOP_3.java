@@ -2,18 +2,22 @@ package com.company;
 
 public class OOP_3 {
     public static void main(String[] args) {
-        Detail first = new Detail("First", 1, 100);
-        Detail second = new Detail("Second", 1, 200);
-        System.out.println("total=" + Detail.total);
-        System.out.println("status=" + Detail.status);
-        first.printDetail(first);
-        second.printDetail(second);
-        first.sell(10);
-        second.sell(300);
-        first.printDetail(first);
-        second.printDetail(second);
-        System.out.println("total=" + Detail.total);
-        System.out.println("status=" + Detail.status);
+        System.out.printf("Total=%d, Status=%s%n", Detail.total, Detail.status);
+        Detail first = new Detail("First", 1, 50);
+        Detail second = new Detail("Second", 1, 50);
+        Detail third = new Detail(null, -1, -150);
+        Detail.printDetail(first);
+        Detail.printDetail(second);
+        Detail.printDetail(third);
+        Detail.printDetail(null);
+        System.out.printf("Total=%d, Status=%s%n", Detail.total, Detail.status);
+        System.out.println(first.sell(0));
+        System.out.println(second.sell(0));
+        System.out.println(third.sell(-100));
+        Detail.printDetail(first);
+        Detail.printDetail(second);
+        Detail.printDetail(third);
+        System.out.printf("Total=%d, Status=%s%n", Detail.total, Detail.status);
     }
 
     public static class Detail {
@@ -26,9 +30,13 @@ public class OOP_3 {
 
         public Detail(String name, int number, int quantity) { // конструктор класса с 3 параметрами
             this.name = (name != null) ? (name) : "default"; // параметр имени детали
-            this.number = (number != 0) ? (number) : 0; // параметр номера партии
-            this.quantity = (quantity != 0) ? (quantity) : 0; // параметр количества деталей в партии
-            total += quantity; // при инициализации увеличиваем общее число деталей на складе
+            this.number = (number > 0) ? (number) : 0; // параметр номера партии
+            if (quantity > 0) { // валидация данных, проверка на положительность
+                this.quantity = quantity; // параметр количества деталей в партии
+                total += quantity; // при инициализации увеличиваем общее число деталей на складе
+            } else
+                this.quantity = 0; // иначе только присваиваем значение по умолчанию
+
             if (TOTAL_MIN <= total & total <= TOTAL_MAX) { // сравниваем total с пределами, если в пределах -
                 status = "OK"; // то ОК
             } else if (total > TOTAL_MAX) { // если превышает верхний предел -
@@ -38,7 +46,7 @@ public class OOP_3 {
 
         public boolean sell(int toSell) { // метод sell, передается количество деталей на продажу
 
-            if (toSell > quantity | toSell < 0 | toSell > total) { // проверяем на возможность продажи, если не ОК -
+            if (toSell > quantity | toSell <= 0 | toSell > total) { // проверяем на возможность продажи, если не ОК -
                 return false; // вовзращаем false
             } else { // если же все адекватно
                 quantity -= toSell; // списываем из количества этих деталей
@@ -54,9 +62,12 @@ public class OOP_3 {
             }
         }
 
-        public void printDetail(Detail thing) { // метод для красивой печати
-            System.out.printf("%s %d: %d%n", thing.name, thing.number, thing.quantity);
+        public static void printDetail(Detail thing) { // метод для красивой печати
+            if (thing != null) { // если передано нормальный экземпляр
+                System.out.printf("%s %d: %d%n", thing.name, thing.number, thing.quantity); // вывод по маске
+            } else {
+                System.out.println("default 0: 0"); // иначе - стандартный вывод
+            }
         }
-
     }
 }

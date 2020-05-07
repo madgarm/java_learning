@@ -18,23 +18,15 @@ public class OOP_2 {
         int year; // год рождения
 
         public Person(String surname, int year) { // конструктор класса с 2 параметрами
-            if (surname == null || surname == "" || year < 0) { // проверяем входные параметры
-                System.out.println("Incorrect data"); // если есть ошибк - сообщение
-            } else { // иначе - все ок, присваиваем параметры экземпляру
-                this.surname = surname; // параметр фамилия
-                this.year = year; // параметр год рождения
-            }
+            this.surname = (surname != null) ? (surname) : ""; // параметр фамилия, проверка на null
+            this.year = (year > 0) ? (year) : 0; // параметр, проверка на отрицательное значение
         }
 
         public Person(String surname, double height, double weight, int year) { // конструктор класса с 4 параметрами
-            if (surname == null || surname == "" || year < 0 || height < 0 || weight < 0) { // проверяем входные параметры
-                System.out.println("Incorrect data"); // если есть ошибк - сообщение
-            } else { // иначе - все ок, присваиваем параметры экземпляру
-                this.surname = surname; // параметр фамилия
-                this.height = height; // параметр рост
-                this.weight = weight; // параметр вес
-                this.year = year; // параметр
-            }
+            this.surname = (surname != null) ? (surname) : ""; // параметр фамилия, проверка на null
+            this.height = (height > 0) ? (height) : 0; // параметр рост, проверка на отрицательное значение
+            this.weight = (weight > 0) ? (weight) : 0; // параметр вес, проверка на отрицательное значение
+            this.year = (year > 0) ? (year) : 0; // параметр, проверка на отрицательное значение
         }
 
         public int getSalaryByDayRate(int dayRate) { // метод подсчета зп за 21 день в целых
@@ -47,8 +39,8 @@ public class OOP_2 {
 
         public void getSalaryByDayRate(int salary, int premium) { // метод подсчета зп с премией
             int result; // объявляем переменную для результата счета
-            result = (salary < 0 & premium < 0) ? 0: (salary * 21 + premium); // проверка на положительность, иначе - 0
-                System.out.printf("Работник %s получил за месяц %d%n", surname, result); // вывод на экран
+            result = (salary < 0 & premium < 0) ? 0 : (salary * 21 + premium); // проверка на положительность, иначе - 0
+            System.out.printf("Работник %s получил за месяц %d%n", surname, result); // вывод на экран
         }
     }
 }

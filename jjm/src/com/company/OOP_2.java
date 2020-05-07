@@ -7,9 +7,13 @@ public class OOP_2 {
     }
 
     public static void printData(Person man) { // метод, передаем экземпляр класса Person
-        System.out.println(man.getSalaryByDayRate(500)); // вывод на экран рез-та метода с заданным знач параметров
-        System.out.println(man.getSalaryByDayRate(625.5)); // вывод на экран рез-та метода с заданным знач параметров
-        man.getSalaryByDayRate(400, 6000); // вывод на экран рез-та метода с заданным знач параметров
+        if (man != null) { // если передан нормальный экземпляр
+            System.out.println(man.getSalaryByDayRate(500)); // вывод на экран рез-та метода с заданным знач параметров
+            System.out.println(man.getSalaryByDayRate(625.5)); // вывод на экран рез-та метода с заданным знач параметров
+            man.getSalaryByDayRate(400, 6000); // вывод на экран рез-та метода с заданным знач параметров
+        } else {
+            System.out.println("Incorrect data"); // иначе - сообщение об ошибке
+        }
     }
 
     public static class Person {
@@ -39,7 +43,9 @@ public class OOP_2 {
 
         public void getSalaryByDayRate(int salary, int premium) { // метод подсчета зп с премией
             int result; // объявляем переменную для результата счета
-            result = (salary < 0 & premium < 0) ? 0 : (salary * 21 + premium); // проверка на положительность, иначе - 0
+            int salaryAfterCheck = (salary < 0) ? 0 : (salary); // переменная для "правильной" платы за день
+            int premiumAfterCheck = (premium < 0) ? 0 : (premium);  // переменная для "правильной" премии
+            result = salaryAfterCheck * 21 + premiumAfterCheck; // считаем ЗП
             System.out.printf("Работник %s получил за месяц %d%n", surname, result); // вывод на экран
         }
     }

@@ -7,11 +7,11 @@ public class Wrapper_classes_3 {
 //        int[] dataInt;
         Double[] dataDouble;
 //        printDataInt(dataInt);
-        printDataDouble(dataDouble);
+//        printDataDouble(dataDouble);
 //        SortingUtil.sortInts(dataInt);
-        SortingUtil.sortDoubles(dataDouble);
+//        SortingUtil.sortDoubles(dataDouble);
 //        printDataInt(dataInt);
-        printDataDouble(dataDouble);
+//        printDataDouble(dataDouble);
     }
 
     private static void printDataInt(int[] data) {

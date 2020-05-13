@@ -25,8 +25,8 @@ public class ClientClassifier {
         } else { // иначе - работаем
             int count = 0; // счетчик для индекса в массиве результатов
             for (int i = 0; i < clients.length; i++) { // проверяем всех клиентов
-                // если искомый по типу и есть место в результатах
-                if (clients[i].type.equals(type) && count < result.length) {
+                // если искомый по типу и есть место в результатах (строчки интернируем)
+                if (clients[i].type.intern() == type.intern() && count < result.length) {
                     result[count] = clients[i]; // записываем в результаты текущего клиента
                     count += 1; // переходим к следующему
                 } else if (count < result.length) { // если тип не тот, но место в результатах еще есть

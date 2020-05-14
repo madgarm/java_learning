@@ -5,14 +5,14 @@ public class ClientClassifier {
     public static void main(String[] args) {
         Client one = new Client(-1, "institution", "one", 150);
         Client two = new Client(2, "institution", "two", -1000);
-        Client three = new Client(100_000_000_001L, "individual", "three", 2300);
+        Client three = new Client(100_000_000_001L, null, "three", 2300);
         Client four = new Client(100_000_000_003L, "institution", "four", 3300);
         Client[] clients = new Client[4];
         clients[0] = one;
         clients[1] = two;
         clients[2] = three;
         clients[3] = four;
-        Client[] results = new Client[8];
+        Client[] results = new Client[5];
         getClientsByType(clients, "institution", results);
         printClients(results);
     }
@@ -30,9 +30,7 @@ public class ClientClassifier {
                 if (clients[i].type == needType && count < result.length) {
                     result[count] = clients[i]; // записываем в результаты текущего клиента
                     count += 1; // переходим к следующему
-                } else if (count < result.length) { // если тип не тот, но место в результатах еще есть
-                    count += 1; // переходим к следующему
-                } else { // если место кончилось
+                } else { // иначе
                     System.out.println("Result array length exceeded"); // сообщение об этом
                     break; // выходим из цикла, не нужно проверять остальных клиентов
                 }

@@ -24,9 +24,10 @@ public class ClientClassifier {
             System.out.println("Result array is null or empty"); // сообщение об ошибке
         } else { // иначе - работаем
             int count = 0; // счетчик для индекса в массиве результатов
+            String needType = type.intern();
             for (int i = 0; i < clients.length; i++) { // проверяем всех клиентов
                 // если искомый по типу и есть место в результатах (строчки интернируем)
-                if (clients[i].type.intern() == type.intern() && count < result.length) {
+                if (clients[i].type == needType && count < result.length) {
                     result[count] = clients[i]; // записываем в результаты текущего клиента
                     count += 1; // переходим к следующему
                 } else if (count < result.length) { // если тип не тот, но место в результатах еще есть
@@ -44,7 +45,7 @@ public class ClientClassifier {
             for (int i = 0; i < data.length; i++) { // поэлементно
                 if (data[i] != null) { // если элемент не null, вообще это не обязательно, но на тестах пригодилось
                     // выводим по маске
-                    System.out.printf("%d; %s; %s; %d%n", data[i].id, data[i].name, data[i].type, data[i].sum);
+                    System.out.printf("%d; %s; %s; %f%n", data[i].id, data[i].name, data[i].type, data[i].sum);
                 }
             }
         }

@@ -12,8 +12,12 @@ public class RandomMoney {
 
     private double price; // объявляем поле цены
 
-    RandomMoney(double price) { // в конструктор пердаем цену
+    RandomMoney(double price) { // в конструктор передаем цену
         this.price = (price < 0) ? 0: price; // сброс до ноля для отрицательных значений
+    }
+
+    RandomMoney() { // конструктор без параметров
+        this.price = 0; // по умолчанию
     }
 
     public double getPrice() { // геттер для цены
@@ -32,11 +36,11 @@ public class RandomMoney {
             this.price = price; // задаем параметру класса результат вычислений
             double finResult = quantity * price; // считаем финансовый результат как произведение количества на стоимость
             if (finResult > 0) { // если больше 0
-                System.out.printf("The company has earned USD %.2f", finResult); // выводим результат
+                System.out.printf("The company has earned %.2f USD", finResult); // выводим результат
             } else if (finResult == 0) { // если равно 0
                 System.out.printf("The company did not earn anything and did not lose on the sale"); // сообщение
             } else { // в иных случаях - если меньше 0
-                System.out.printf("The company has lost USD %.2f", finResult); // выводим результат
+                System.out.printf("The company has lost %.2f USD", Math.abs(finResult)); // выводим результат
             }
             System.out.println(); // перевод на новую строку
         }

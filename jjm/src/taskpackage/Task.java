@@ -4,10 +4,10 @@ import static mypackage.Radius.getSquare; // статично подключае
 public class Task {
 
     public static void main(String[] args) {
-        task(-1);
+        System.out.println(task(-1));
     }
 
-    public static void task(int number) {
-        System.out.println(getSquare(number)); // вызываем импортированный метод и передаем ему целочисленной из внешнего метода
+    public static double task(int number) {
+        return getSquare(number); // вызываем импортированный метод и передаем ему целочисленной из внешнего метода
     }
 }

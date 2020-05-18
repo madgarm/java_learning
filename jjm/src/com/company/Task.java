@@ -9,12 +9,16 @@ public class Task {
         System.out.println(thingOne.speed());
         System.out.println(thingTwo.speed());
         System.out.println(thingThree.speed());
-        System.out.println(maxSpeed());
+        System.out.println();
+        System.out.println();
+        Task task = new Task();
+        System.out.println(task.maxSpeed());
+
     }
 
     enum Planes{ // создаем перечисление
         BOEING(8000, 10), // Боинг
-        IL90(5400, 0), // Ил90
+        IL90(5400, 9), // Ил90
         TU153(14000, 15); // Ту153
 
         public final int distance; // объявляем поле расстояния
@@ -36,7 +40,7 @@ public class Task {
         }
     }
 
-    public static int maxSpeed() {
+    public int maxSpeed() {
         Planes[] everyPlanes = Planes.values(); // создаем массив для всех перечислений
         int maxSpeed = 0; // переменная для хранения максимальной скорости
         for (Planes thing : everyPlanes) { // для каждого элемента из массива

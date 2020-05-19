@@ -1,10 +1,10 @@
 package animals;
 
 // класс царства "Животные"
-class Animal {
+public class Animal {
     private String regio; // домен, к которому принадлежит семейство
 
-    Animal(String regio) {
+    public Animal(String regio) {
         this.regio = regio;
     }
 
@@ -16,5 +16,3 @@ class Animal {
         this.regio = regio;
     }
 }
-
-

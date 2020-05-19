@@ -6,9 +6,9 @@ public class Species extends Cat { // указываем на наследова
     private String subfamilia; // подсемейство, к которому принадлежит данный вид
     private String genus; // род, к которому принадлежит данный вид
 
-    public Species(String regio, String regnum, String phylum, String classis, String ordo, String nameOfSpecie, String subfamilia, String genus) {
+    public Species(String regio, String regnum, String phylum, String classis, String ordo, String subfamilia, String genus) {
         super(regio, regnum, phylum, classis, ordo); // вызываем конструктор из родительского класса, передаем параметры
-        this.nameOfSpecie = nameOfSpecie;
+
         this.subfamilia = subfamilia;
         this.genus = genus;
     }

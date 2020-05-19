@@ -20,6 +20,10 @@ public class MonthlyStaff implements Staff { // класс использует 
     }
 
     public int calculateSalary(int salary) { // метод подсчета зарплаты
-        return (salary * workDays + premium); // по формуле
+        if (salary < 0) { // проверка параметра на отрицательность
+            return premium; // если отрицательное, возвращает только премию
+        } else { // если положительное значение
+            return (salary * workDays + premium); // по формуле
+        }
     }
 }

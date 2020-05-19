@@ -16,10 +16,18 @@ public class WeeklyStaff extends MonthlyStaff implements Staff { // класс �
 
     @Override // переопределяем метод
     public int calculateSalary(int salary) { // метод подсчета зарплаты
-        return (salary * workWeeks); // по формуле
+        if (salary < 0) { // проверка параметра на отрицательность
+            return 0; // если отрицательное, возвращает 0
+        } else { // если положительное значение
+            return (salary * workWeeks); // по формуле
+        }
     }
 
     public void printYearSalary(int salary) { // метод вывода
-        System.out.println(workWeeks * salary * 26); // по формуле
+        if (salary < 0) { // проверка параметра на отрицательность
+            System.out.println(0); // если отрицательное, выводит 0
+        } else { // если положительное значение
+            System.out.println(workWeeks * salary * 26); // по формуле
+        }
     }
 }

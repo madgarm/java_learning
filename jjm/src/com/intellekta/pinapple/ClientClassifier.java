@@ -12,8 +12,9 @@ public class ClientClassifier {
         clients[1] = two;
         clients[2] = three;
         clients[3] = four;
-        Client[] results = new Client[5];
+        Client[] results = new Client[4];
         getClientsByType(clients, "institution", results);
+        System.out.println();
         printClients(results);
     }
 
@@ -30,7 +31,8 @@ public class ClientClassifier {
                 if (clients[i].type == needType && count < result.length) {
                     result[count] = clients[i]; // записываем в результаты текущего клиента
                     count += 1; // переходим к следующему
-                } else { // иначе
+                } else if (count < result.length) { // если тип не тот, но место в результатах еще есть, не делаем ничего
+                } else { // иначе, т.е. массив результатов заполнился
                     System.out.println("Result array length exceeded"); // сообщение об этом
                     break; // выходим из цикла, не нужно проверять остальных клиентов
                 }

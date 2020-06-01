@@ -2,18 +2,17 @@ package com.intellekta.checks;
 
 public class Receipt {
 
-    public static void printReceipt(ProductInfo[] products) {
-        Transaction transaction = new Transaction(0);
+    public static void printReceipt(ProductInfo[] products) { // принимает массив из элементов класса ProductInfo
+        Transaction transaction = new Transaction(0); // создаем экземпляр класса Transaction с нулевым стартовым значением
         for (int i = 0; i < products.length; i++) {
+            // наполняем записями
             Transaction.TransactionItem anotherItem = transaction.new TransactionItem(products[i].name, products[i].price);
-//            System.out.printf("name = %s%n", products[i].name);
-//            System.out.printf("price = %f%n", products[i].price);
-            anotherItem.printInfo();
+            anotherItem.printInfo(); // и параллельно выводим на экран
         }
-        transaction.printCheck();
+        transaction.printCheck(); // выводим общий результат по заказу
     }
 
-    public static void printTransactionInfo(Transaction.TransactionItem example) {
-        example.getTransaction().printCheck();
+    public static void printTransactionInfo(Transaction.TransactionItem example) { // берет экземпляр класса TransactionItem
+        example.getTransaction().printCheck(); // выводит на экран информацию по общей транзакции
     }
 }

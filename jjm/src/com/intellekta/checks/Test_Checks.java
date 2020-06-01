@@ -7,11 +7,15 @@ public class Test_Checks {
 
         ProductInfo[] productInfo = new ProductInfo[2];
         Transaction trans = new Transaction(0);
-        Transaction.TransactionItem item1 = trans.new TransactionItem("one", 1);
+        Transaction.TransactionItem item1 = trans.new TransactionItem("one", 123.45);
         Transaction.TransactionItem item2 = trans.new TransactionItem("two", 2);
+
         productInfo[0]=item1;
         productInfo[1]=item2;
         Receipt.printReceipt(productInfo);
+
+
+        item1.printInfo();
 //        trans.printCheck();
 
 

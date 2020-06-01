@@ -1,8 +1,8 @@
 package com.intellekta.checks;
 
-abstract public class ProductInfo {
+abstract public class ProductInfo { //абстрактный класс
 
-    String name; // наименование продукта
-    double price; // цена продукта
+    protected String name; // наименование продукта
+    protected double price; // цена продукта
 
 }

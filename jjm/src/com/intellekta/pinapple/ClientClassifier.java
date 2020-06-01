@@ -12,7 +12,7 @@ public class ClientClassifier {
         clients[1] = two;
         clients[2] = three;
         clients[3] = four;
-        Client[] results = new Client[4];
+        Client[] results = new Client[3];
         getClientsByType(clients, "institution", results);
         System.out.println();
         printClients(results);
@@ -24,17 +24,18 @@ public class ClientClassifier {
         } else if (result == null || result.length == 0) { // проверка массива клиентов на null и пустоту
             System.out.println("Result array is null or empty"); // сообщение об ошибке
         } else { // иначе - работаем
-            int count = 0; // счетчик для индекса в массиве результатов
-            String needType = type.intern();
-            for (int i = 0; i < clients.length; i++) { // проверяем всех клиентов
-                // если искомый по типу и есть место в результатах (строчки интернируем)
-                if (clients[i].type == needType && count < result.length) {
-                    result[count] = clients[i]; // записываем в результаты текущего клиента
-                    count += 1; // переходим к следующему
-                } else if (count < result.length) { // если тип не тот, но место в результатах еще есть, не делаем ничего
-                } else { // иначе, т.е. массив результатов заполнился
-                    System.out.println("Result array length exceeded"); // сообщение об этом
-                    break; // выходим из цикла, не нужно проверять остальных клиентов
+            String needType = type.intern(); // интернируем искомую строку
+            // организуем цикл, перебираем все элементы массива клиентов
+            // i - для клиентов, j - для результатов, count - показатель заполненности массива результатов
+            for (int i = 0, j = 0, count = 0; i < clients.length && count != 1; i++) {
+                // если клиент подходит и есть место в результатах
+                if (j < result.length && clients[i].type == needType) {
+                    result[j] = clients[i]; // заполняем
+                    j += 1; // переходим к следующей позиции в результатах
+                // если клиент походит, но места уже нет
+                } else if (clients[i].type == needType && j == result.length) {
+                    System.out.println("Result array length exceeded"); // сообщаем об этом
+                    count = 1; // переключаем показатель заполненности массива результатов
                 }
             }
         }
